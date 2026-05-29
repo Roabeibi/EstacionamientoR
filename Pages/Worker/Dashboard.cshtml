@@ -1,0 +1,238 @@
+@page
+@model EstacionamientoR.Pages.Worker.DashboardModel
+
+<div class="container-fluid">
+
+    <div class="mb-4">
+
+        <h1 class="fw-bold">
+            Dashboard Trabajador
+        </h1>
+
+        <p class="text-muted">
+            Gestión rápida del estacionamiento
+        </p>
+
+    </div>
+
+    <div class="row g-4">
+
+        <!-- REGISTRO -->
+
+        <div class="col-lg-4">
+
+            <div class="card shadow border-0 rounded-4">
+
+                <div class="card-header bg-success text-white">
+
+                    Registrar Vehículo
+
+                </div>
+
+                <div class="card-body">
+
+                    <form method="post">
+
+                        <div class="mb-3">
+
+                            <label>
+                                Placa
+                            </label>
+
+                            <input asp-for="Vehiculo.Placa"
+                                   class="form-control" />
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label>
+                                Tipo
+                            </label>
+
+                            <select asp-for="Vehiculo.TipoVehiculo"
+                                    class="form-select">
+
+                                <option>
+                                    Auto
+                                </option>
+
+                                <option>
+                                    Moto
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label>
+                                Modelo
+                            </label>
+
+                            <input asp-for="Vehiculo.Modelo"
+                                   class="form-control" />
+
+                        </div>
+                        <div class="mb-3">
+
+                            <label>
+                                Color
+                            </label>
+
+                            <input asp-for="Vehiculo.Color"
+                                   class="form-control" />
+
+                        </div>
+
+                        <button class="btn btn-success w-100">
+
+                            Registrar Entrada
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- VEHÍCULOS ACTIVOS -->
+
+        <div class="col-lg-8">
+
+            <div class="card shadow border-0 rounded-4">
+
+                <div class="card-header bg-dark text-white">
+
+                    Vehículos Activos
+
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table table-hover">
+<thead>
+    <tr>
+        <th>Placa</th>
+        <th>Tipo</th>
+        <th>Modelo</th>
+        <th>Color</th>
+        <th>Espacio</th>
+        <th>Hora Entrada</th>
+        <th>Acción</th>
+    </tr>
+</thead>
+
+                        <tbody>
+
+                            @foreach(var item in Model.VehiculosActivos)
+                            {
+                                <tr>
+
+                                    <td>
+                                        @item.Placa
+                                    </td>
+
+                                    <td>
+                                        @item.TipoVehiculo
+                                    </td>
+                                    <td>
+                                        @item.Modelo
+                                    </td>
+                                    <td>@item.Color</td>
+                                    <td>
+                                        @item.EspacioAsignado
+                                    </td>
+
+                                    <td>
+                                        @item.HoraEntrada
+                                    </td>
+
+                                    <td>
+
+                                        <a asp-page="/Vehiculos/Salida"
+                                           asp-route-id="@item.Id"
+                                           class="btn btn-danger btn-sm">
+
+                                            Salida
+
+                                        </a>
+
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MAPA -->
+
+    <div class="card shadow border-0 rounded-4 mt-4">
+
+        <div class="card-header bg-primary text-white">
+
+            Estado de Espacios
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="parking-grid">
+
+                @foreach(var e in Model.Espacios)
+                {
+                    string clase =
+                        "espacio-disponible";
+
+                    if(e.Estado == "Ocupado")
+                    {
+                        clase =
+                            "espacio-ocupado";
+                    }
+
+                    if(e.Estado == "Reservado")
+                    {
+                        clase =
+                            "espacio-reservado";
+                    }
+
+                    if(e.Estado == "FueraServicio")
+                    {
+                        clase =
+                            "espacio-fuera";
+                    }
+
+                    <div class="espacio-card @clase">
+
+                        <h4>
+                            @e.NumeroEspacio
+                        </h4>
+
+                        <div>
+                            @e.Estado
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

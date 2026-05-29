@@ -1,0 +1,107 @@
+@page
+@model EstacionamientoR.Pages.Perfil.IndexModel
+
+<div class="container py-5">
+
+    <div class="card shadow-lg border-0 rounded-4">
+
+        <div class="card-header text-white"
+             style="background:#18529D">
+
+            <h2>Mi Perfil</h2>
+
+        </div>
+
+        <div class="card-body">
+
+            @if (TempData["Mensaje"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["Mensaje"]
+                </div>
+            }
+
+            <form method="post">
+
+                <div class="text-center mb-4">
+
+                    <img src="@Model.UsuarioActual.FotoPerfil"
+                         width="140"
+                         height="140"
+                         style="border-radius:50%;
+                                object-fit:cover;
+                                border:5px solid #28AD56;" />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Foto de Perfil (URL)</label>
+
+                    <input asp-for="UsuarioActual.FotoPerfil"
+                           class="form-control" />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Nombre</label>
+
+                    <input asp-for="UsuarioActual.Nombre"
+                           class="form-control" />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Correo</label>
+
+                    <input asp-for="UsuarioActual.Correo"
+                           class="form-control" />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Teléfono</label>
+
+                    <input asp-for="UsuarioActual.Telefono"
+                           class="form-control" />
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Descripción</label>
+
+                    <textarea asp-for="UsuarioActual.Descripcion"
+                              rows="4"
+                              class="form-control">
+                    </textarea>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label>Rol</label>
+
+                    <input value="@Model.UsuarioActual.Rol"
+                           class="form-control"
+                           readonly />
+
+                </div>
+
+                <button class="btn text-white"
+                        style="background:#28AD56">
+
+                    Guardar Cambios
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

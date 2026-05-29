@@ -1,0 +1,179 @@
+@page
+@model EstacionamientoR.Pages.Reservas.CreateModel
+
+@{
+    ViewData["Title"] = "Reservar Espacio";
+}
+
+<div class="container-fluid">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h1 class="fw-bold">
+                Reservar Espacio
+            </h1>
+
+            <p class="text-muted">
+                Selecciona un espacio disponible
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="row g-4">
+
+        <!-- MAPA -->
+
+        <div class="col-lg-8">
+
+            <div class="card shadow border-0 rounded-4">
+
+                <div class="card-header bg-primary text-white">
+
+                    Espacios Disponibles
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="parking-grid">
+
+                        @foreach(var e in Model.Espacios)
+                        {
+                            string clase =
+                                "espacio-disponible";
+
+                            bool disponible =
+                                e.Estado == "Disponible";
+
+                            if(e.Estado == "Ocupado")
+                            {
+                                clase = "espacio-ocupado";
+                            }
+
+                            if(e.Estado == "Reservado")
+                            {
+                                clase = "espacio-reservado";
+                            }
+
+                            <div class="espacio-card @clase"
+                                 onclick="seleccionarEspacio('@e.NumeroEspacio', '@e.Estado')">
+
+                                <h3>
+                                    @e.NumeroEspacio
+                                </h3>
+
+                                <div>
+                                    @e.Tipo
+                                </div>
+
+                                <hr>
+
+                                <strong>
+                                    @e.Estado
+                                </strong>
+
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- FORMULARIO -->
+
+        <div class="col-lg-4">
+
+            <div class="card shadow border-0 rounded-4">
+
+                <div class="card-header bg-success text-white">
+
+                    Datos de Reserva
+
+                </div>
+
+                <div class="card-body">
+
+                    <form method="post">
+
+                        <div class="mb-3">
+
+                            <label class="fw-bold">
+                                Espacio Seleccionado
+                            </label>
+
+                            <input asp-for="Reserva.NumeroEspacio"
+                                   id="espacioInput"
+                                   class="form-control"
+                                   readonly />
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="fw-bold">
+                                Nombre
+                            </label>
+
+                            <input asp-for="Reserva.UsuarioCliente"
+                                   class="form-control" />
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="fw-bold">
+                                Fecha
+                            </label>
+
+                            <input asp-for="Reserva.FechaEntrada"
+                                   type="datetime-local"
+                                   class="form-control" />
+
+                        </div>
+
+                        <button class="btn btn-success w-100">
+
+                            Confirmar Reserva
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts{
+
+<script>
+
+function seleccionarEspacio(numero, estado)
+{
+    if(estado !== "Disponible")
+    {
+        alert("Este espacio no está disponible");
+        return;
+    }
+
+    document
+        .getElementById("espacioInput")
+        .value = numero;
+}
+
+</script>
+
+}

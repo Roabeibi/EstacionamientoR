@@ -1,0 +1,80 @@
+@page
+@model EstacionamientoR.Pages.Pagos.TicketModel
+
+<div class="container mt-5">
+
+    <div class="card shadow p-4">
+
+        <h2 class="text-center mb-4">
+            Ticket de Pago
+        </h2>
+
+        <hr />
+
+        <p>
+            <strong>Folio:</strong>
+            @Model.Pago.Folio
+        </p>
+
+        <p>
+            <strong>Placa:</strong>
+            @Model.Vehiculo.Placa
+        </p>
+
+        <p>
+            <strong>Tipo:</strong>
+            @Model.Vehiculo.TipoVehiculo
+        </p>
+
+        <p>
+            <strong>Entrada:</strong>
+            @Model.Vehiculo.HoraEntrada
+        </p>
+
+        <p>
+            <strong>Salida:</strong>
+            @Model.Vehiculo.HoraSalida
+        </p>
+
+        <p>
+            <strong>Total:</strong>
+            $@Model.Pago.Total
+        </p>
+
+        <p>
+            <strong>Método:</strong>
+            @Model.Pago.MetodoPago
+        </p>
+
+        <hr />
+
+        <div class="text-center">
+
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=@Model.Pago.Folio" />
+
+        </div>
+
+        <div class="text-center mt-4">
+
+            <button class="btn btn-dark"
+                    onclick="window.print()">
+
+                Imprimir Ticket
+
+            </button>
+
+        </div>
+        <div class="text-center mt-3">
+
+    <a asp-page="/Pagos/Index"
+       class="btn btn-secondary">
+
+        Volver
+
+    </a>
+
+</div>
+
+    </div>
+
+</div>

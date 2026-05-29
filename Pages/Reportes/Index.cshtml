@@ -1,0 +1,45 @@
+@page
+@model EstacionamientoR.Pages.Reportes.IndexModel
+
+<h2>Reportes del Sistema</h2>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <h3>Total de Ingresos</h3>
+
+        <h1 class="text-success">
+            $ @Model.TotalIngresos
+        </h1>
+    </div>
+</div>
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>Vehículo ID</th>
+            <th>Total</th>
+            <th>Método</th>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.Pagos)
+        {
+            <tr>
+                <td>@item.VehiculoId</td>
+                <td>$ @item.Total</td>
+                <td>@item.MetodoPago</td>
+                <td>@item.FechaPago</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<form method="post" asp-page-handler="ExportarExcel">
+    <button class="btn btn-success">
+        Exportar a Excel
+    </button>
+</form>

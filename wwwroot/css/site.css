@@ -1,0 +1,149 @@
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* CANVAS FONDO */
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* WRAPPER ENCIMA */
+.wrapper {
+    position: relative;
+    z-index: 2;
+    display: flex;
+}
+
+/* SIDEBAR FIJA */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 260px;
+    height: 100vh;
+
+    background: linear-gradient(180deg, #18529D, #123d75, #28AD56);
+    color: white;
+
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* MAIN CORREGIDO (ESTO QUITA EL ESPACIO EN BLANCO) */
+.main {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+/* TOPBAR */
+.topbar {
+    padding: 15px 20px;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(10px);
+
+    display: flex;
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+/* CONTENT */
+.content {
+    padding: 20px;
+    flex: 1;
+}
+
+/* LINKS MENU */
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.menu li a:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+/* ANIMACIONES */
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.page-exit {
+    animation: fadeOut 0.3s forwards;
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; transform: translateX(-20px); }
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+/* LOGO UV */
+.uv-logo {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+
+    animation: floatLogo 4s ease-in-out infinite;
+}
+
+/* TEXTO LOGO */
+.logo-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.logo-text small {
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+/* ANIMACIÓN PRO */
+@keyframes floatLogo {
+    0%   { transform: rotate(0deg) translateY(0px); }
+    50%  { transform: rotate(8deg) translateY(-4px); }
+    100% { transform: rotate(0deg) translateY(0px); }
+}

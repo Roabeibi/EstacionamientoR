@@ -1,0 +1,44 @@
+@page
+@model EstacionamientoR.Pages.Admin.Usuarios.IndexModel
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Admin")]
+
+<h2>Gestión de Usuarios</h2>
+
+<a asp-page="/Admin/Usuarios/Create"
+   class="btn btn-success mb-3">
+   Nuevo Usuario
+</a>
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Rol</th>
+            <th>Fecha Registro</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.Usuarios)
+        {
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@item.Correo</td>
+                <td>@item.Rol</td>
+                <td>@item.FechaRegistro</td>
+                <td>
+                    <a asp-page="/Admin/Usuarios/Delete"
+                       asp-route-id="@item.Id"
+                       class="btn btn-danger btn-sm">
+                       Eliminar
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

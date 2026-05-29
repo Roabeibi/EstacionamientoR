@@ -1,0 +1,134 @@
+@page
+@model EstacionamientoR.Pages.Espacios.IndexModel
+
+@{
+    ViewData["Title"] = "Mapa";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2 class="fw-bold">
+            🚗 Mapa Interactivo
+        </h2>
+
+        <div>
+
+            <a asp-page="/Espacios/Create"
+               class="btn btn-success">
+
+                + Nuevo Espacio
+
+            </a>
+
+            <a asp-page="/Worker/Dashboard"
+               class="btn btn-dark">
+
+                ← Volver
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="mb-4">
+
+        <span class="badge bg-success p-2">
+            Disponible
+        </span>
+
+        <span class="badge bg-danger p-2">
+            Ocupado
+        </span>
+
+        <span class="badge bg-warning text-dark p-2">
+            Reservado
+        </span>
+
+        <span class="badge bg-secondary p-2">
+            Fuera de Servicio
+        </span>
+
+    </div>
+
+    <div class="parking-grid">
+
+        @foreach (var espacio in Model.Espacios)
+        {
+            string clase = "espacio-disponible";
+            string icono = "🟢";
+
+            if (espacio.Estado == "Ocupado")
+            {
+                clase = "espacio-ocupado";
+                icono = "🚗";
+            }
+
+            if (espacio.Estado == "Reservado")
+            {
+                clase = "espacio-reservado";
+                icono = "📌";
+            }
+
+            if (espacio.Estado == "FueraServicio")
+            {
+                clase = "espacio-fuera";
+                icono = "⛔";
+            }
+
+            <div class="espacio-card @clase">
+
+                <div class="fs-1">
+
+                    @icono
+
+                </div>
+
+                <div class="fw-bold fs-4">
+
+                    @espacio.NumeroEspacio
+
+                </div>
+
+                <div class="mb-2">
+
+                    @espacio.Tipo
+
+                </div>
+
+                <hr />
+
+                <strong>
+
+                    @espacio.Estado
+
+                </strong>
+
+                <div class="mt-3">
+
+                    <a asp-page="/Espacios/Edit"
+                       asp-route-id="@espacio.Id"
+                       class="btn btn-warning btn-sm">
+
+                        Editar
+
+                    </a>
+
+                    <a asp-page="/Espacios/Delete"
+                       asp-route-id="@espacio.Id"
+                       class="btn btn-danger btn-sm">
+
+                        Eliminar
+
+                    </a>
+
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>

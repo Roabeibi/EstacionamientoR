@@ -1,0 +1,326 @@
+@using System.Security.Claims
+
+<nav class="navbar navbar-expand-lg navbar-dark shadow"
+     style="background:#18529D;">
+
+    <div class="container-fluid">
+
+        <!-- LOGO -->
+
+        <a class="navbar-brand fw-bold"
+           asp-page="/Index">
+
+            🚗 EstacionamientoR
+
+        </a>
+
+        <!-- BOTON MOVIL -->
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <!-- MENU -->
+
+        <div class="collapse navbar-collapse"
+             id="navbarNav">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                @if (User.Identity != null &&
+                     User.Identity.IsAuthenticated)
+                {
+                    var rol =
+                        User.FindFirst(ClaimTypes.Role)?.Value;
+
+                    <!-- ===================== -->
+                    <!-- ADMIN -->
+                    <!-- ===================== -->
+
+                    if (rol == "Admin")
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-page="/Admin/Dashboard">
+
+                                Dashboard
+
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-page="/Admin/Usuarios/Index">
+
+                                Usuarios
+
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-page="/Admin/Trabajadores/Index">
+
+                                Trabajadores
+
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-page="/Vehiculos/Index">
+
+                                Vehículos
+
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-page="/Reservas/Index">
+
+                                Reservas
+
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-page="/Espacios/Index">
+
+                                Espacios
+
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-page="/Pagos/Index">
+
+                                Pagos
+
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-page="/Reportes/Index">
+
+                                Reportes
+
+                            </a>
+                        </li>
+                        <li class="nav-item">
+    <a class="nav-link"
+       asp-page="/Configuracion/Index">
+
+        Configuración
+
+    </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link"
+       asp-page="/Perfil/Index">
+
+        Mi Perfil
+
+    </a>
+</li>
+                    }
+
+                    <!-- ===================== -->
+                    <!-- TRABAJADOR -->
+                    <!-- ===================== -->
+
+if (rol == "Trabajador")
+{
+    <li class="nav-item">
+        <a class="nav-link"
+           asp-page="/Worker/Dashboard">
+
+            Dashboard
+
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link"
+           asp-page="/Reservas/Index">
+
+            Reservas
+
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link"
+           asp-page="/Vehiculos/Index">
+
+            Vehículos
+
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link"
+           asp-page="/Espacios/Index">
+
+            Espacios
+
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link"
+           asp-page="/Pagos/Index">
+
+            Pagos
+
+        </a>
+    </li>
+}
+
+                    <!-- ===================== -->
+                    <!-- CLIENTE -->
+                    <!-- ===================== -->
+
+                    if (rol == "Cliente")
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-page="/Client/Dashboard">
+
+                                Inicio
+
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-page="/Reservas/Create">
+
+                                Reservar
+
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-page="/Reservas/Index">
+
+                                Mis Reservas
+
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-page="/Espacios/Index">
+
+                                Espacios
+
+                            </a>
+                        </li>
+                    }
+
+                    <!-- ===================== -->
+                    <!-- COMENTARIOS -->
+                    <!-- ===================== -->
+
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           asp-page="/Comentarios/Publico">
+
+                            Comentarios
+
+                        </a>
+                    </li>
+
+                    <!-- ===================== -->
+                    <!-- USUARIO -->
+                    <!-- ===================== -->
+
+                    <li class="nav-item ms-lg-3">
+
+                        <span class="badge rounded-pill"
+                              style="background:#28AD56; font-size:14px;">
+
+                            @User.Identity.Name
+
+                        </span>
+
+                    </li>
+<li class="nav-item">
+    <a class="nav-link"
+       asp-page="/Perfil/Index">
+
+        Mi Perfil
+
+    </a>
+</li>
+                    <!-- ===================== -->
+                    <!-- SALIR -->
+                    <!-- ===================== -->
+
+                    <li class="nav-item ms-lg-2">
+
+                        <a class="btn btn-sm"
+                           style="background:#28AD56;
+                                  color:white;
+                                  border-radius:10px;"
+                           asp-page="/Account/Logout">
+
+                            Salir
+
+                        </a>
+
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+
+                        <a class="nav-link"
+                           asp-page="/Account/Login">
+
+                            Login
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link"
+                           asp-page="/Account/Register">
+
+                            Registro
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link"
+                           asp-page="/Comentarios/Publico">
+
+                            Comentarios
+
+                        </a>
+
+                    </li>
+                }
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>

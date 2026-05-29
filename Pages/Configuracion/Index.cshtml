@@ -1,0 +1,145 @@
+@page
+@model EstacionamientoR.Pages.Configuracion.IndexModel
+
+<div class="container py-4">
+
+    <div class="card shadow-lg border-0 rounded-4">
+
+        <div class="card-header text-white"
+             style="background:#18529D">
+
+            <h3 class="mb-0">
+                Configuración General
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            @if (TempData["Mensaje"] != null)
+            {
+                <div class="alert alert-success">
+                    @TempData["Mensaje"]
+                </div>
+            }
+
+            <form method="post">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Nombre del Estacionamiento
+                        </label>
+
+                        <input asp-for="ConfigSistema.NombreEstacionamiento"
+                               class="form-control" />
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label class="form-label">
+                            Tarifa por Hora
+                        </label>
+
+                        <input asp-for="ConfigSistema.TarifaHora"
+                               class="form-control" />
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label class="form-label">
+                            Tarifa Moto
+                        </label>
+
+                        <input asp-for="ConfigSistema.TarifaMoto"
+                               class="form-control" />
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+
+                        <label class="form-label">
+                            Tarifa Día
+                        </label>
+
+                        <input asp-for="ConfigSistema.TarifaDia"
+                               class="form-control" />
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Horario Apertura
+                        </label>
+
+                        <input asp-for="ConfigSistema.HorarioApertura"
+                               class="form-control" />
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Horario Cierre
+                        </label>
+
+                        <input asp-for="ConfigSistema.HorarioCierre"
+                               class="form-control" />
+
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+
+                        <label class="form-label">
+                            Dirección
+                        </label>
+
+                        <input asp-for="ConfigSistema.Direccion"
+                               class="form-control" />
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Teléfono
+                        </label>
+
+                        <input asp-for="ConfigSistema.Telefono"
+                               class="form-control" />
+
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label">
+                            Correo
+                        </label>
+
+                        <input asp-for="ConfigSistema.Correo"
+                               class="form-control" />
+
+                    </div>
+
+                </div>
+
+                <button type="submit"
+                        class="btn text-white"
+                        style="background:#28AD56">
+
+                    Guardar Configuración
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

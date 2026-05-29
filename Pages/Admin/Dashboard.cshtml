@@ -1,0 +1,260 @@
+@page
+@model EstacionamientoR.Pages.Admin.DashboardModel
+
+<div class="container-fluid">
+
+    <div class="mb-4">
+
+        <h1 class="fw-bold">
+            Dashboard Parking
+        </h1>
+
+        <p class="text-muted">
+            Panel administrativo general
+        </p>
+
+    </div>
+
+    <!-- TARJETAS -->
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-md-3">
+
+            <div class="dashboard-card card-green">
+
+                <h5>Vehículos Activos</h5>
+
+                <h1>
+                    @Model.VehiculosActivos
+                </h1>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="dashboard-card card-dark">
+
+                <h5>Espacios Disponibles</h5>
+
+                <h1>
+                    @Model.EspaciosDisponibles
+                </h1>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="dashboard-card card-gold">
+
+                <h5>Pagos Hoy</h5>
+
+                <h1>
+                    @Model.TotalPagosHoy
+                </h1>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="dashboard-card card-green">
+
+                <h5>Ingresos Hoy</h5>
+
+                <h1>
+                    $ @Model.IngresosHoy
+                </h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- CONTENIDO CENTRAL -->
+
+    <div class="row g-4">
+
+        <!-- VEHÍCULOS -->
+
+        <div class="col-lg-6">
+
+            <div class="card shadow border-0 rounded-4">
+
+                <div class="card-header bg-dark text-white">
+
+                    Vehículos Recientes
+
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Placa</th>
+                                <th>Tipo</th>
+                                <th>Estado</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            @foreach (var item in Model.VehiculosRecientes)
+                            {
+                                <tr>
+
+                                    <td>@item.Placa</td>
+
+                                    <td>@item.TipoVehiculo</td>
+
+                                    <td>
+
+                                        @if(item.HoraSalida == null)
+                                        {
+                                            <span class="badge bg-success">
+                                                Dentro
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">
+                                                Salió
+                                            </span>
+                                        }
+
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PAGOS -->
+
+        <div class="col-lg-6">
+
+            <div class="card shadow border-0 rounded-4">
+
+                <div class="card-header bg-success text-white">
+
+                    Pagos Recientes
+
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Total</th>
+                                <th>Método</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            @foreach (var item in Model.PagosRecientes)
+                            {
+                                <tr>
+
+                                    <td>
+                                        $ @item.Total
+                                    </td>
+
+                                    <td>
+                                        @item.MetodoPago
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MAPA -->
+
+    <div class="card shadow border-0 rounded-4 mt-4">
+
+        <div class="card-header bg-primary text-white">
+
+            Estado de Espacios
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="parking-grid">
+
+                @foreach(var e in Model.Espacios)
+                {
+                    string clase = "espacio-disponible";
+
+                    if(e.Estado == "Ocupado")
+                    {
+                        clase = "espacio-ocupado";
+                    }
+
+                    if(e.Estado == "Reservado")
+                    {
+                        clase = "espacio-reservado";
+                    }
+
+                    if(e.Estado == "FueraServicio")
+                    {
+                        clase = "espacio-fuera";
+                    }
+
+                    <div class="espacio-card @clase">
+
+                        <h4>
+                            @e.NumeroEspacio
+                        </h4>
+
+                        <div>
+                            @e.Estado
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

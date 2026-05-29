@@ -1,0 +1,70 @@
+@page
+@model EstacionamientoR.Pages.Vehiculos.CreateModel
+
+<h2 class="section-title">
+    Registrar Vehículo
+</h2>
+
+<div class="form-panel">
+
+    <form method="post">
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <label>Placa</label>
+
+                <input asp-for="Vehiculo.Placa"
+                       class="form-control" />
+
+            </div>
+
+            <div class="col-md-6">
+
+                <label>Tipo Vehículo</label>
+
+                <select asp-for="Vehiculo.TipoVehiculo"
+                        class="form-control">
+
+                    <option>Auto</option>
+                    <option>Moto</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+
+                <label>Modelo</label>
+
+                <input asp-for="Vehiculo.Modelo"
+                       class="form-control" />
+
+            </div>
+
+            <div class="col-md-6">
+
+                <label>Color</label>
+
+                <input asp-for="Vehiculo.Color"
+                       class="form-control" />
+
+            </div>
+
+        </div>
+
+        <button type="submit"
+                class="btn btn-success btn-action mt-3">
+
+            Guardar Vehículo
+
+        </button>
+
+    </form>
+
+</div>

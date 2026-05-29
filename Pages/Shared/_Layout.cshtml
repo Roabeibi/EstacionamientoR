@@ -1,0 +1,237 @@
+﻿@using System.Security.Claims
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Estacionamiento</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/dashboard.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body class="page-transition">
+
+<!-- CANVAS PARTICULAS -->
+<canvas id="particle-canvas"></canvas>
+
+@{
+    var rol = User.FindFirst(ClaimTypes.Role)?.Value;
+}
+
+<div class="wrapper">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="logo-container">
+
+            <img src="~/images/uv-logo.png"
+                 class="uv-logo"
+                 alt="UV Logo" />
+
+            <div class="logo-text">
+
+                <a asp-page="/Index"
+                   style="text-decoration:none; color:white; font-weight:700; font-size:18px;">
+
+                    Estacionamiento
+
+                </a>
+
+                <small style="display:block; opacity:0.8;">
+                    Sistema Inteligente
+                </small>
+
+            </div>
+
+        </div>
+
+        <ul class="menu">
+
+        @if (rol == "Admin")
+        {
+            <li><a asp-page="/Admin/Dashboard"><i class="fa fa-chart-line"></i> Dashboard</a></li>
+            <li><a asp-page="/Vehiculos/Index"><i class="fa fa-car"></i> Vehículos</a></li>
+            <li><a asp-page="/Espacios/Index"><i class="fa fa-square-parking"></i> Espacios</a></li>
+            <li><a asp-page="/Reservas/Index"><i class="fa fa-calendar"></i> Reservas</a></li>
+            <li><a asp-page="/Pagos/Index"><i class="fa fa-money-bill"></i> Pagos</a></li>
+            <li><a asp-page="/Reportes/Index"><i class="fa fa-file"></i> Reportes</a></li>
+            <li><a asp-page="/Configuracion/Index"><i class="fa fa-gear"></i> Configuración</a></li>
+            <li><a asp-page="/Perfil/Index"><i class="fa fa-user"></i> Mi Perfil</a></li>
+            <li><a asp-page="/Account/Logout"><i class="fa fa-right-from-bracket"></i> Salir</a></li>
+
+        }
+
+        @if (rol == "Trabajador")
+        {
+            <li><a asp-page="/Worker/Dashboard"><i class="fa fa-chart-line"></i> Dashboard</a></li>
+            <li><a asp-page="/Vehiculos/Index"><i class="fa fa-car"></i> Vehículos</a></li>
+            <li><a asp-page="/Espacios/Index"><i class="fa fa-square-parking"></i> Espacios</a></li>
+            <li><a asp-page="/Reservas/Index"><i class="fa fa-calendar"></i> Reservas</a></li>
+            <li><a asp-page="/Pagos/Index"><i class="fa fa-chart-line"></i> Pagos</a></li>
+            <li><a asp-page="/Perfil/Index"><i class="fa fa-user"></i> Mi Perfil</a></li>
+            <li><a asp-page="/Account/Logout"><i class="fa fa-right-from-bracket"></i> Salir</a></li>
+
+        }
+
+        @if (rol == "Cliente")
+        {
+            <li><a asp-page="/Client/Dashboard"><i class="fa fa-chart-line"></i> Inicio</a></li>
+            <li><a asp-page="/Reservas/Index"><i class="fa fa-calendar"></i> Reservas</a></li>
+            <li><a asp-page="/Espacios/Index"><i class="fa fa-square-parking"></i> Espacios</a></li>
+            <li><a asp-page="/Perfil/Index"><i class="fa fa-user"></i> Mi Perfil</a></li>
+            <li><a asp-page="/Comentarios/Publico"><i class="fa fa-comment"></i> Comentarios</a></li>
+            <li><a asp-page="/Account/Logout"><i class="fa fa-right-from-bracket"></i> Salir</a></li>
+        }
+
+        </ul>
+
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <header class="topbar">
+            <div>
+                @if (rol == "Admin") { <span>Panel Administrativo</span> }
+                else if (rol == "Trabajador") { <span>Panel Trabajador</span> }
+                else if (rol == "Cliente") { <span>Panel Cliente</span> }
+            </div>
+
+            <div>
+                Bienvenido, @User.Identity?.Name
+            </div>
+        </header>
+
+        <main class="content fade-in">
+            @RenderBody()
+        </main>
+
+    </div>
+
+</div>
+
+<!-- BOTÓN SCROLL ABAJO -->
+
+
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- TRANSICIÓN ENTRE PÁGINAS -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    document.querySelectorAll("a[href^='/']").forEach(link => {
+
+        link.addEventListener("click", function (e) {
+
+            const href = this.getAttribute("href");
+            if (!href) return;
+
+            e.preventDefault();
+
+            document.body.classList.add("page-exit");
+
+            setTimeout(() => {
+                window.location.href = href;
+            }, 300);
+
+        });
+
+    });
+
+});
+</script>
+
+<!-- PARTICULAS -->
+<script>
+const canvas = document.getElementById("particle-canvas");
+const ctx = canvas.getContext("2d");
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+resizeCanvas();
+
+let particles = [];
+let mouse = { x: null, y: null, radius: 120 };
+
+window.addEventListener("mousemove", e => {
+    mouse.x = e.x;
+    mouse.y = e.y;
+});
+
+class Particle {
+    constructor(x, y, dx, dy, size) {
+        this.x = x;
+        this.y = y;
+        this.dx = dx;
+        this.dy = dy;
+        this.size = size;
+    }
+
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(40,173,86,0.6)";
+        ctx.fill();
+    }
+
+    update() {
+
+        let dx = mouse.x - this.x;
+        let dy = mouse.y - this.y;
+        let distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < mouse.radius) {
+            this.x -= dx / 20;
+            this.y -= dy / 20;
+        }
+
+        this.x += this.dx;
+        this.y += this.dy;
+
+        if (this.x < 0 || this.x > canvas.width) this.dx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.dy *= -1;
+
+        this.draw();
+    }
+}
+
+function init() {
+    particles = [];
+
+    for (let i = 0; i < 80; i++) {
+        particles.push(new Particle(
+            Math.random() * canvas.width,
+            Math.random() * canvas.height,
+            (Math.random() - 0.5) * 0.5,
+            (Math.random() - 0.5) * 0.5,
+            Math.random() * 3 + 1
+        ));
+    }
+}
+
+function animate() {
+    requestAnimationFrame(animate);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => p.update());
+}
+
+window.addEventListener("resize", resizeCanvas);
+
+init();
+animate();
+</script>
+
+@await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

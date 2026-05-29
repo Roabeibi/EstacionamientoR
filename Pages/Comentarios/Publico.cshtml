@@ -1,0 +1,334 @@
+@page
+@model EstacionamientoR.Pages.Comentarios.PublicoModel
+
+<div class="container py-5">
+
+    <!-- ENCABEZADO -->
+
+    <div class="text-center mb-5">
+
+        <h1 class="titulo-uv">
+            Comentarios y Opiniones
+        </h1>
+
+        <p class="subtitulo-uv">
+            Ayúdanos a mejorar el Gestor de Cadena de Estacionamientos
+            compartiendo tu experiencia.
+        </p>
+
+    </div>
+
+    <div class="row g-4">
+
+        <!-- FORMULARIO -->
+
+        <div class="col-lg-4">
+
+            <div class="card-uv">
+
+                <h3 class="mb-4 text-center">
+                    Nuevo Comentario
+                </h3>
+
+                <form method="post">
+
+                    <div class="mb-3">
+
+                        <label class="form-label fw-bold">
+                            Nombre
+                        </label>
+
+                        <input asp-for="Comentario.NombreUsuario"
+                               class="form-control input-uv" />
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label fw-bold">
+                            Comentario
+                        </label>
+
+                        <textarea asp-for="Comentario.Mensaje"
+                                  rows="5"
+                                  class="form-control input-uv">
+                        </textarea>
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label class="form-label fw-bold">
+                            Calificación
+                        </label>
+
+                        <select asp-for="Comentario.Calificacion"
+                                class="form-select input-uv">
+
+                            <option value="5">
+                                ⭐⭐⭐⭐⭐ Excelente
+                            </option>
+
+                            <option value="4">
+                                ⭐⭐⭐⭐ Muy Bueno
+                            </option>
+
+                            <option value="3">
+                                ⭐⭐⭐ Bueno
+                            </option>
+
+                            <option value="2">
+                                ⭐⭐ Regular
+                            </option>
+
+                            <option value="1">
+                                ⭐ Malo
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <button type="submit"
+                            class="btn btn-publicar w-100">
+
+                        Publicar Comentario
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <!-- LISTADO -->
+
+        <div class="col-lg-8">
+
+            <div class="card-uv">
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+
+                    <h3>
+                        Opiniones Recientes
+                    </h3>
+
+                    <span class="badge bg-success p-2">
+
+                        @Model.Comentarios.Count Comentarios
+
+                    </span>
+
+                </div>
+
+                @if (!Model.Comentarios.Any())
+                {
+                    <div class="alert alert-info">
+
+                        Aún no existen comentarios registrados.
+
+                    </div>
+                }
+
+                @foreach (var item in Model.Comentarios.OrderByDescending(x => x.Fecha))
+                {
+                    <div class="comentario-card">
+
+                        <div class="avatar">
+
+                            @item.NombreUsuario.Substring(0,1).ToUpper()
+
+                        </div>
+
+                        <div class="contenido">
+
+                            <div class="d-flex justify-content-between">
+
+                                <h5 class="mb-1">
+
+                                    @item.NombreUsuario
+
+                                </h5>
+
+                                <small class="text-muted">
+
+                                    @item.Fecha.ToString("dd/MM/yyyy HH:mm")
+
+                                </small>
+
+                            </div>
+
+                            <div class="mb-2">
+
+                                @for (int i = 1; i <= item.Calificacion; i++)
+                                {
+                                    <span class="estrella">
+                                        ⭐
+                                    </span>
+                                }
+
+                            </div>
+
+                            <p class="mb-0">
+
+                                @item.Mensaje
+
+                            </p>
+
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+    :root{
+        --uv-blue:#18529D;
+        --uv-green:#28AD56;
+    }
+
+    body{
+        background:#f4f7fb;
+    }
+
+    .titulo-uv{
+        color:var(--uv-blue);
+        font-weight:800;
+        font-size:3rem;
+    }
+
+    .subtitulo-uv{
+        color:#6c757d;
+        font-size:1.1rem;
+    }
+
+    .card-uv{
+        background:white;
+        border:none;
+        border-radius:25px;
+        padding:30px;
+        box-shadow:0 10px 30px rgba(0,0,0,.08);
+    }
+
+    .input-uv{
+        border-radius:12px;
+        border:2px solid #e5e5e5;
+        padding:12px;
+    }
+
+    .input-uv:focus{
+        border-color:var(--uv-blue);
+        box-shadow:0 0 0 .2rem rgba(24,82,157,.2);
+    }
+
+    .btn-publicar{
+        background:linear-gradient(
+            135deg,
+            var(--uv-blue),
+            var(--uv-green)
+        );
+        border:none;
+        color:white;
+        font-weight:700;
+        padding:12px;
+        border-radius:15px;
+        transition:.3s;
+    }
+
+    .btn-publicar:hover{
+        transform:translateY(-3px);
+    }
+
+    .comentario-card{
+
+        display:flex;
+        gap:20px;
+
+        padding:20px;
+
+        border-radius:20px;
+
+        background:#fafafa;
+
+        margin-bottom:20px;
+
+        transition:.3s;
+
+        border-left:5px solid var(--uv-blue);
+
+    }
+
+    .comentario-card:hover{
+
+        transform:translateY(-5px);
+
+        box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+    }
+
+    .avatar{
+
+        width:60px;
+
+        height:60px;
+
+        background:linear-gradient(
+            135deg,
+            var(--uv-blue),
+            var(--uv-green)
+        );
+
+        color:white;
+
+        font-size:24px;
+
+        font-weight:bold;
+
+        border-radius:50%;
+
+        display:flex;
+
+        justify-content:center;
+
+        align-items:center;
+
+        flex-shrink:0;
+
+    }
+
+    .contenido{
+        width:100%;
+    }
+
+    .estrella{
+        font-size:18px;
+    }
+
+    @@media(max-width:768px){
+
+        .titulo-uv{
+            font-size:2rem;
+        }
+
+        .comentario-card{
+
+            flex-direction:column;
+
+            text-align:center;
+
+            align-items:center;
+
+        }
+
+    }
+
+</style>

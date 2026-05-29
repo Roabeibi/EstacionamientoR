@@ -1,0 +1,186 @@
+﻿
+/* =========================
+   VARIABLES UV
+========================= */
+
+:root {
+    --uv-azul: #18529D;
+    --uv-verde: #28AD56;
+    --uv-fondo: #f4f7fb;
+}
+.topbar span {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.topbar div:last-child {
+    background: rgba(255,255,255,0.15);
+    padding: 5px 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+.topbar {
+    background: linear-gradient(135deg, var(--uv-azul), var(--uv-verde));
+    color: white;
+
+    padding: 12px 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+
+    border-radius: 0 0 15px 15px;
+    animation: fadeInUp 0.6s ease;
+}
+/* =========================
+   FONDO CON VIDA (MOVIMIENTO SUAVE)
+========================= */
+
+body {
+    background: linear-gradient(270deg, #f4f7fb, #eaf2ff, #e9fff1);
+    background-size: 600% 600%;
+    animation: bgMove 15s ease infinite;
+
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+}
+
+@keyframes bgMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* =========================
+   LINKS CON VIDA
+========================= */
+
+a {
+    color: var(--uv-azul);
+    transition: 0.3s;
+}
+
+a:hover {
+    color: var(--uv-verde);
+    transform: translateY(-2px);
+}
+
+/* =========================
+   BOTONES CON MOVIMIENTO
+========================= */
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--uv-azul), var(--uv-verde));
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+/*.scroll-bottom-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+    border: none;
+
+    background-color: #212529;
+    color: white;
+    font-size: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.scroll-bottom-btn:hover {
+    transform: scale(1.1);
+    background-color: #000;
+}
+/*
+/* =========================
+   TARJETAS CON FLOAT (como tu imagen)
+========================= */
+
+.card,
+.feature-card,
+.box-shadow {
+    transition: 0.4s ease;
+}
+
+.card:hover,
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* =========================
+   ELEMENTO FLOTANTE GLOBAL (EFECTO VIDA)
+========================= */
+
+.float {
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+}
+
+/* =========================
+   NAVBAR SUAVE
+========================= */
+
+.navbar {
+    transition: 0.3s;
+}
+
+.navbar:hover {
+    transform: translateY(-2px);
+}
+
+/* =========================
+   FOOTER ANIMADO SUAVE
+========================= */
+
+.footer {
+    background: linear-gradient(135deg, var(--uv-azul), var(--uv-verde));
+    color: white;
+    padding: 20px;
+    animation: bgMove 20s ease infinite;
+}
+
+/* =========================
+   UTILIDAD GLOBAL
+========================= */
+
+.fade-in {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

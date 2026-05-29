@@ -1,0 +1,145 @@
+@page
+@model EstacionamientoR.Pages.Vehiculos.IndexModel
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2>
+            Vehículos
+        </h2>
+
+        <div>
+
+            <a asp-page="/Vehiculos/Create"
+               class="btn btn-success">
+
+                + Nuevo Vehículo
+
+            </a>
+
+            <a asp-page="/Worker/Dashboard"
+               class="btn btn-dark">
+
+                ← Volver
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <form method="get"
+          class="mb-4">
+
+        <div class="input-group">
+
+            <input asp-for="BuscarPlaca"
+                   class="form-control"
+                   placeholder="Buscar por placa..." />
+
+            <button class="btn btn-primary">
+
+                Buscar
+
+            </button>
+
+        </div>
+
+    </form>
+
+    <table class="table table-hover table-bordered shadow">
+
+        <thead class="table-dark">
+
+            <tr>
+
+                <th>Placa</th>
+                <th>Tipo</th>
+                <th>Modelo</th>
+                <th>Color</th>
+                <th>Entrada</th>
+                <th>Salida</th>
+                <th>Espacio</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model.Vehiculos)
+            {
+                bool activo =
+                    item.HoraSalida == null;
+
+                <tr>
+
+                    <td>@item.Placa</td>
+
+                    <td>@item.TipoVehiculo</td>
+
+                    <td>@item.Modelo</td>
+
+                    <td>@item.Color</td>
+
+                    <td>
+                        @item.HoraEntrada
+                    </td>
+
+                    <td>
+                        @(item.HoraSalida == null
+                            ? "Activo"
+                            : item.HoraSalida.ToString())
+                    </td>
+
+                    <td>
+                        @item.EspacioAsignado
+                    </td>
+
+                    <td>
+
+                        @if (activo)
+                        {
+                            <span class="badge bg-success">
+
+                                Dentro
+
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">
+
+                                Finalizado
+
+                            </span>
+                        }
+
+                    </td>
+
+                    <td>
+
+                        @if (activo)
+                        {
+                            <a asp-page="/Vehiculos/Salida"
+                               asp-route-id="@item.Id"
+                               class="btn btn-danger btn-sm">
+
+                                Registrar Salida
+
+                            </a>
+                        }
+
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>

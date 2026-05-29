@@ -1,0 +1,32 @@
+@page
+@model EstacionamientoR.Pages.Admin.Trabajadores.CreateModel
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Admin")]
+
+<h2>Crear Trabajador</h2>
+
+<form method="post">
+
+    <div class="mb-3">
+        <label>Nombre</label>
+        <input asp-for="Usuario.Nombre"
+               class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Correo</label>
+        <input asp-for="Usuario.Correo"
+               class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Contraseña</label>
+        <input asp-for="Usuario.Password"
+               class="form-control" />
+    </div>
+
+    <button class="btn btn-primary">
+        Guardar Trabajador
+    </button>
+
+</form>

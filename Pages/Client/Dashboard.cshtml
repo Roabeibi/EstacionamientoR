@@ -1,0 +1,195 @@
+@page
+@model EstacionamientoR.Pages.Client.DashboardModel
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize(Roles = "Cliente")]
+
+<div class="container-fluid">
+
+    <!-- TITULO -->
+
+    <div class="mb-4">
+
+        <h1 class="fw-bold">
+            Inicio
+        </h1>
+
+        <p class="text-muted">
+            Bienvenido al sistema del estacionamiento
+        </p>
+
+    </div>
+
+    <!-- TARJETAS -->
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-md-6">
+
+            <div class="dashboard-card card-green">
+
+                <h5>
+                    Mis Reservas
+                </h5>
+
+                <h1>
+                    @Model.TotalReservas
+                </h1>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="dashboard-card card-blue">
+
+                <h5>
+                    Espacios Disponibles
+                </h5>
+
+                <h1>
+                    @Model.EspaciosDisponibles
+                </h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row g-4">
+
+        <!-- HISTORIAL -->
+
+        <div class="col-lg-8">
+
+            <div class="card shadow border-0 rounded-4">
+
+                <div class="card-header bg-primary text-white">
+
+                    Historial de Reservas
+
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table table-hover">
+
+                        <thead class="table-dark">
+
+                            <tr>
+
+                                <th>Espacio</th>
+
+                                <th>Fecha Entrada</th>
+
+                                <th>Estado</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            @foreach (var item in Model.Reservas)
+                            {
+                                <tr>
+
+                                    <td>
+
+                                        <span class="badge bg-primary">
+
+                                            @item.NumeroEspacio
+
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        @item.FechaEntrada
+
+                                    </td>
+
+                                    <td>
+
+                                        @if(item.Estado == "Activa")
+                                        {
+                                            <span class="badge bg-success">
+
+                                                Activa
+
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">
+
+                                                Finalizada
+
+                                            </span>
+                                        }
+
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ACCIONES -->
+
+        <div class="col-lg-4">
+
+            <div class="card shadow border-0 rounded-4">
+
+                <div class="card-header bg-success text-white">
+
+                    Acciones Rápidas
+
+                </div>
+
+                <div class="card-body">
+
+                    <div class="d-grid gap-3">
+
+                        <a asp-page="/Reservas/Create"
+                           class="btn btn-primary btn-lg">
+
+                            Reservar Espacio
+
+                        </a>
+
+                        <a asp-page="/Espacios/Index"
+                           class="btn btn-success btn-lg">
+
+                            Ver Espacios
+
+                        </a>
+
+                        <a asp-page="/Comentarios/Publico"
+                           class="btn btn-warning btn-lg">
+
+                            Comentarios
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

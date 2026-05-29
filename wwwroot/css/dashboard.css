@@ -1,0 +1,540 @@
+/* =========================================
+   RESET
+========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* =========================================
+   COLORES UV
+========================================= */
+
+:root{
+
+    --uv-azul:#18529D;
+    --uv-verde:#28AD56;
+    --uv-blanco:#FFFFFF;
+
+    --gris-fondo:#f4f6f9;
+    --gris-texto:#6b7280;
+}
+
+/* =========================================
+   BODY
+========================================= */
+
+body{
+
+    font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+
+    background:var(--gris-fondo);
+
+    color:#222;
+}
+
+/* =========================================
+   WRAPPER
+========================================= */
+
+.wrapper{
+
+    display:flex;
+
+    min-height:100vh;
+}
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.sidebar{
+
+    width:260px;
+
+    background:linear-gradient(
+        180deg,
+        var(--uv-azul),
+        #123d75
+    );
+
+    color:white;
+
+    min-height:100vh;
+
+    padding-top:20px;
+
+    position:fixed;
+
+    box-shadow:4px 0 15px rgba(0,0,0,0.1);
+}
+
+/* LOGO */
+
+.logo{
+
+    text-align:center;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    margin-bottom:40px;
+
+    padding:10px;
+}
+
+.logo small{
+
+    display:block;
+
+    margin-top:8px;
+
+    font-size:12px;
+
+    opacity:0.8;
+}
+
+/* MENU */
+
+.menu{
+
+    list-style:none;
+
+    padding:0;
+}
+
+.menu li{
+
+    margin:8px 0;
+}
+
+.menu li a{
+
+    color:white;
+
+    text-decoration:none;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:15px 22px;
+
+    margin:0 10px;
+
+    border-radius:14px;
+
+    transition:0.3s;
+
+    font-size:16px;
+
+    font-weight:500;
+}
+
+.menu li a:hover{
+
+    background:rgba(255,255,255,0.15);
+
+    transform:translateX(5px);
+}
+
+.menu li a i{
+
+    width:20px;
+}
+
+/* =========================================
+   MAIN
+========================================= */
+
+.main{
+
+    margin-left:260px;
+
+    width:calc(100% - 260px);
+}
+
+/* =========================================
+   TOPBAR
+========================================= */
+
+.topbar{
+
+    height:75px;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 30px;
+
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+}
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content{
+
+    padding:30px;
+}
+
+/* =========================================
+   DASHBOARD CARDS
+========================================= */
+
+.card-dashboard{
+
+    border-radius:20px;
+
+    padding:30px;
+
+    color:white;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
+    transition:0.3s;
+
+    border:none;
+}
+
+.card-dashboard:hover{
+
+    transform:translateY(-5px);
+}
+
+/* VARIANTES */
+
+.card-blue{
+
+    background:linear-gradient(
+        135deg,
+        var(--uv-azul),
+        #123d75
+    );
+}
+
+.card-green{
+
+    background:linear-gradient(
+        135deg,
+        var(--uv-verde),
+        #1f8c45
+    );
+}
+
+.card-white{
+
+    background:white;
+
+    color:#222;
+}
+
+.card-dashboard h2{
+
+    font-size:40px;
+
+    margin-bottom:10px;
+}
+
+.card-dashboard p{
+
+    opacity:0.9;
+
+    margin:0;
+}
+
+/* =========================================
+   TABLAS
+========================================= */
+
+.table-custom{
+
+    background:white;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 2px 12px rgba(0,0,0,0.08);
+}
+
+.table-custom table{
+
+    margin:0;
+}
+
+.table-custom thead{
+
+    background:var(--uv-azul);
+
+    color:white;
+}
+
+.table-custom th,
+.table-custom td{
+
+    padding:16px;
+
+    vertical-align:middle;
+}
+
+.table-custom tbody tr{
+
+    transition:0.2s;
+}
+
+.table-custom tbody tr:hover{
+
+    background:#eef4ff;
+}
+
+/* =========================================
+   BOTONES
+========================================= */
+
+.btn{
+
+    border-radius:12px !important;
+
+    font-weight:600;
+
+    padding:10px 18px;
+
+    transition:0.3s;
+}
+
+.btn-primary{
+
+    background:var(--uv-azul);
+
+    border:none;
+}
+
+.btn-primary:hover{
+
+    background:#123d75;
+
+    transform:scale(1.03);
+}
+
+.btn-success{
+
+    background:var(--uv-verde);
+
+    border:none;
+}
+
+.btn-success:hover{
+
+    background:#1f8c45;
+
+    transform:scale(1.03);
+}
+
+.btn-dark{
+
+    background:var(--uv-azul);
+
+    border:none;
+}
+
+.btn-dark:hover{
+
+    background:#123d75;
+}
+
+/* =========================================
+   FORMULARIOS
+========================================= */
+
+.form-panel{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+}
+
+.form-panel input,
+.form-panel select{
+
+    margin-bottom:15px;
+
+    border-radius:10px !important;
+
+    padding:12px;
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    border-color:var(--uv-verde);
+
+    box-shadow:0 0 0 0.2rem rgba(40,173,86,0.2);
+}
+
+/* =========================================
+   TITULOS
+========================================= */
+
+.section-title{
+
+    margin-bottom:25px;
+
+    font-weight:bold;
+
+    color:var(--uv-azul);
+}
+
+/* =========================================
+   MAPA ESTACIONAMIENTO
+========================================= */
+
+.parking-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fill,minmax(140px,1fr));
+
+    gap:20px;
+}
+
+.espacio-card{
+
+    border-radius:18px;
+
+    padding:20px;
+
+    color:white;
+
+    text-align:center;
+
+    transition:0.3s;
+
+    cursor:pointer;
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.espacio-card:hover{
+
+    transform:scale(1.05);
+}
+
+/* ESTADOS */
+
+.espacio-disponible{
+
+    background:var(--uv-verde);
+}
+
+.espacio-ocupado{
+
+    background:var(--uv-azul);
+}
+
+.espacio-reservado{
+
+    background:white;
+
+    color:#222;
+
+    border:2px solid var(--uv-azul);
+}
+
+.espacio-fuera{
+
+    background:#6b7280;
+}
+
+/* =========================================
+   CARDS GENERALES
+========================================= */
+
+.card{
+
+    border:none !important;
+
+    border-radius:20px !important;
+
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.card-header{
+
+    border:none !important;
+
+    border-radius:20px 20px 0 0 !important;
+
+    font-weight:bold;
+}
+
+/* =========================================
+   BADGES
+========================================= */
+
+.badge{
+
+    padding:8px 12px;
+
+    border-radius:10px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media(max-width:768px){
+
+    .sidebar{
+
+        width:100%;
+
+        height:auto;
+
+        position:relative;
+    }
+
+    .main{
+
+        margin-left:0;
+
+        width:100%;
+    }
+
+    .wrapper{
+
+        flex-direction:column;
+    }
+
+    .topbar{
+
+        padding:15px;
+    }
+
+    .content{
+
+        padding:15px;
+    }
+}
