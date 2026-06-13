@@ -54,6 +54,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXNwYWNpb3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/equor/EstacionamientoR/Pages/Admin/Estacionamientos/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXN0YWNpb25hbWllbnRvc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/equor/EstacionamientoR/Pages/Admin/Estacionamientos/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cRXN0YWNpb25hbWllbnRvc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/equor/EstacionamientoR/Pages/Admin/Trabajadores/AsignarSucursal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVHJhYmFqYWRvcmVzXEFzaWduYXJTdWN1cnNhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/equor/EstacionamientoR/Pages/Admin/Trabajadores/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVHJhYmFqYWRvcmVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -76,6 +88,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/equor/EstacionamientoR/Pages/Admin/Usuarios/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVXN1YXJpb3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/equor/EstacionamientoR/Pages/Admin/Usuarios/SeleccionarSucursal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cVXN1YXJpb3NcU2VsZWNjaW9uYXJTdWN1cnNhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/equor/EstacionamientoR/Pages/Client/Dashboard.cshtml]

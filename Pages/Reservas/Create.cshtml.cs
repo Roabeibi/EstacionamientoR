@@ -22,8 +22,16 @@ namespace EstacionamientoR.Pages.Reservas
         public List<Espacio> Espacios { get; set; }
             = new();
 
+        public List<Estacionamiento> Estacionamientos { get; set; }
+            = new();
+
         public async Task OnGetAsync()
         {
+            Estacionamientos =
+                await _context.Estacionamientos
+                    .Find(_ => true)
+                    .ToListAsync();
+
             Espacios =
                 await _context.Espacios
                     .Find(x => x.Estado == "Disponible")
@@ -37,6 +45,19 @@ namespace EstacionamientoR.Pages.Reservas
 
             Reserva.Estado =
                 "Activa";
+
+            var estacionamiento =
+                await _context.Estacionamientos
+                    .Find(x =>
+                        x.Id ==
+                        Reserva.EstacionamientoId)
+                    .FirstOrDefaultAsync();
+
+            if (estacionamiento != null)
+            {
+                Reserva.NombreEstacionamiento =
+                    estacionamiento.Nombre;
+            }
 
             await _context.Reservas
                 .InsertOneAsync(Reserva);

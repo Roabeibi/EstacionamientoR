@@ -1,7 +1,5 @@
 @page
 @model EstacionamientoR.Pages.Admin.Trabajadores.CreateModel
-@using Microsoft.AspNetCore.Authorization
-@attribute [Authorize(Roles = "Admin")]
 
 <h2>Crear Trabajador</h2>
 
@@ -25,7 +23,24 @@
                class="form-control" />
     </div>
 
-    <button class="btn btn-primary">
+    <div class="mb-3">
+        <label>Sucursal</label>
+
+        <select asp-for="Usuario.EstacionamientoId"
+                class="form-control">
+
+            @foreach (var e in Model.Estacionamientos)
+            {
+                <option value="@e.Id">
+                    @e.Nombre
+                </option>
+            }
+
+        </select>
+    </div>
+
+    <button type="submit"
+            class="btn btn-primary">
         Guardar Trabajador
     </button>
 

@@ -27,5 +27,9 @@ namespace EstacionamientoR.Models
         public string? EspacioAsignado { get; set; }
 
         public bool Activo { get; set; } = true;
+
+        public string? EstacionamientoId { get; set; }
+
+public string? NombreEstacionamiento { get; set; }
     }
 }

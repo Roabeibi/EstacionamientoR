@@ -13,6 +13,8 @@ namespace EstacionamientoR.Data
             _database = client.GetDatabase(settings.DatabaseName);
         }
 
+public IMongoCollection<Estacionamiento> Estacionamientos =>
+    _database.GetCollection<Estacionamiento>("Estacionamientos");
         public IMongoCollection<Usuario> Usuarios =>
             _database.GetCollection<Usuario>("usuarios");
 

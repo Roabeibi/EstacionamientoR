@@ -1,0 +1,60 @@
+@page
+@model EstacionamientoR.Pages.Admin.Estacionamientos.IndexModel
+
+<div class="container py-4">
+
+    <div class="d-flex justify-content-between mb-4">
+
+        <h2>
+            Sucursales
+        </h2>
+
+        <a asp-page="Create"
+           class="btn btn-success">
+
+            Nueva Sucursal
+
+        </a>
+
+    </div>
+
+    <div class="card shadow border-0">
+
+        <div class="card-body">
+
+            <table class="table">
+
+                <thead>
+
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Ciudad</th>
+                        <th>Teléfono</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    @foreach(var item in Model.Estacionamientos)
+                    {
+                        <tr>
+
+                            <td>@item.Nombre</td>
+
+                            <td>@item.Ciudad</td>
+
+                            <td>@item.Telefono</td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

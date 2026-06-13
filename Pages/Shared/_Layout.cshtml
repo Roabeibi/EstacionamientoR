@@ -56,7 +56,22 @@
 
         @if (rol == "Admin")
         {
-            <li><a asp-page="/Admin/Dashboard"><i class="fa fa-chart-line"></i> Dashboard</a></li>
+
+<li>
+    <a asp-page="/Admin/Dashboard">
+        <i class="fa fa-chart-line"></i>
+        Dashboard
+    </a>
+</li>
+
+
+<li>
+    <a asp-page="/Admin/Trabajadores/Index">
+        <i class="fa fa-users"></i>
+        Trabajadores
+    </a>
+</li>
+
             <li><a asp-page="/Vehiculos/Index"><i class="fa fa-car"></i> Vehículos</a></li>
             <li><a asp-page="/Espacios/Index"><i class="fa fa-square-parking"></i> Espacios</a></li>
             <li><a asp-page="/Reservas/Index"><i class="fa fa-calendar"></i> Reservas</a></li>
@@ -64,6 +79,7 @@
             <li><a asp-page="/Reportes/Index"><i class="fa fa-file"></i> Reportes</a></li>
             <li><a asp-page="/Configuracion/Index"><i class="fa fa-gear"></i> Configuración</a></li>
             <li><a asp-page="/Perfil/Index"><i class="fa fa-user"></i> Mi Perfil</a></li>
+
             <li><a asp-page="/Account/Logout"><i class="fa fa-right-from-bracket"></i> Salir</a></li>
 
         }
@@ -104,9 +120,21 @@
                 else if (rol == "Cliente") { <span>Panel Cliente</span> }
             </div>
 
-            <div>
-                Bienvenido, @User.Identity?.Name
-            </div>
+           <div class="text-end">
+
+    <strong>
+        @User.Identity?.Name
+    </strong>
+
+    <br />
+
+    <small class="text-light">
+
+        @User.FindFirst("Sucursal")?.Value
+
+    </small>
+
+</div>
         </header>
 
         <main class="content fade-in">

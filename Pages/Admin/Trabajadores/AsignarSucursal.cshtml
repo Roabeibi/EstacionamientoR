@@ -1,0 +1,86 @@
+@page "{id}"
+@model EstacionamientoR.Pages.Admin.Trabajadores.AsignarSucursalModel
+
+<div class="container py-4">
+
+    <div class="card shadow border-0 rounded-4">
+
+        <div class="card-header text-white"
+             style="background:#18529D">
+
+            <h3>
+
+                Asignar Sucursal
+
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form method="post">
+
+                <input asp-for="Usuario.Id"
+                       type="hidden" />
+
+                <input asp-for="Usuario.Nombre"
+                       type="hidden" />
+
+                <input asp-for="Usuario.Correo"
+                       type="hidden" />
+
+                <input asp-for="Usuario.Password"
+                       type="hidden" />
+
+                <input asp-for="Usuario.Rol"
+                       type="hidden" />
+
+                <h5>
+
+                    @Model.Usuario.Nombre
+
+                </h5>
+
+                <p>
+
+                    @Model.Usuario.Correo
+
+                </p>
+
+                <div class="mb-3">
+
+                    <label>
+
+                        Seleccione la sucursal
+
+                    </label>
+
+                    <select asp-for="Usuario.EstacionamientoId"
+                            class="form-select">
+
+                        @foreach(var item in Model.Estacionamientos)
+                        {
+                            <option value="@item.Id">
+
+                                @item.Nombre
+
+                            </option>
+                        }
+
+                    </select>
+
+                </div>
+
+                <button class="btn btn-success">
+
+                    Guardar Cambio
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

@@ -25,5 +25,12 @@ public DateTime FechaRegistro { get; set; }
     = DateTime.Now;
 
 public string Descripcion { get; set; } = "";
+
+public string? EstacionamientoId { get; set; }
+
+public string? NombreEstacionamiento { get; set; }
+public string? EstacionamientoFavoritoId { get; set; }
+
+public string? EstacionamientoFavoritoNombre { get; set; }
     }
 }

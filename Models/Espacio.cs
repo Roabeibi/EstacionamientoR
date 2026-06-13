@@ -18,5 +18,7 @@ namespace EstacionamientoR.Models
 
         public string Estado { get; set; }
             = string.Empty;
+
+    public string? EstacionamientoId { get; set; }
     }
 }

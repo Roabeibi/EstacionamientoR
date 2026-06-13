@@ -25,5 +25,7 @@ namespace EstacionamientoR.Models
                 .ToString()
                 .Substring(0, 8)
                 .ToUpper();
+
+        public string? EstacionamientoId { get; set; }
     }
 }

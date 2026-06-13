@@ -1,0 +1,56 @@
+@page
+@model EstacionamientoR.Pages.Admin.Estacionamientos.CreateModel
+
+<div class="container py-4">
+
+    <div class="card shadow-lg border-0 rounded-4">
+
+        <div class="card-header text-white"
+             style="background:#18529D">
+
+            <h3>Nueva Sucursal</h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <form method="post">
+
+                <div class="mb-3">
+                    <label>Nombre</label>
+                    <input asp-for="Estacionamiento.Nombre"
+                           class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Dirección</label>
+                    <input asp-for="Estacionamiento.Direccion"
+                           class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Ciudad</label>
+                    <input asp-for="Estacionamiento.Ciudad"
+                           class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                    <label>Teléfono</label>
+                    <input asp-for="Estacionamiento.Telefono"
+                           class="form-control" />
+                </div>
+
+                <button class="btn text-white"
+                        style="background:#28AD56">
+
+                    Guardar Sucursal
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

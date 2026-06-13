@@ -14,6 +14,7 @@ namespace EstacionamientoR.Pages.Admin.Trabajadores
         }
 
         public List<Usuario> Trabajadores { get; set; }
+            = new();
 
         public async Task OnGetAsync()
         {

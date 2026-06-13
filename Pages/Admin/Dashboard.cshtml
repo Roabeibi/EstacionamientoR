@@ -3,15 +3,48 @@
 
 <div class="container-fluid">
 
-    <div class="mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
 
-        <h1 class="fw-bold">
-            Dashboard Parking
-        </h1>
+        <div>
+            <h1 class="fw-bold">
+                Dashboard Parking
+            </h1>
 
-        <p class="text-muted">
-            Panel administrativo general
-        </p>
+            <p class="text-muted">
+                Sucursal seleccionada:
+                <strong>@Model.NombreSucursalSeleccionada</strong>
+            </p>
+        </div>
+
+        <form method="get">
+
+            <select name="EstacionamientoId"
+                    class="form-select"
+                    onchange="this.form.submit()">
+
+                <option value="">
+                    Todas las sucursales
+                </option>
+
+                @foreach (var item in Model.Estacionamientos)
+                {
+                    if (item.Id == Model.EstacionamientoId)
+                    {
+                        <option value="@item.Id" selected>
+                            @item.Nombre
+                        </option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">
+                            @item.Nombre
+                        </option>
+                    }
+                }
+
+            </select>
+
+        </form>
 
     </div>
 
@@ -77,36 +110,28 @@
 
     </div>
 
-    <!-- CONTENIDO CENTRAL -->
+    <!-- VEHÍCULOS Y PAGOS -->
 
     <div class="row g-4">
-
-        <!-- VEHÍCULOS -->
 
         <div class="col-lg-6">
 
             <div class="card shadow border-0 rounded-4">
 
                 <div class="card-header bg-dark text-white">
-
                     Vehículos Recientes
-
                 </div>
 
                 <div class="card-body">
 
-                    <table class="table">
+                    <table class="table table-hover">
 
                         <thead>
-
                             <tr>
-
                                 <th>Placa</th>
                                 <th>Tipo</th>
                                 <th>Estado</th>
-
                             </tr>
-
                         </thead>
 
                         <tbody>
@@ -121,7 +146,7 @@
 
                                     <td>
 
-                                        @if(item.HoraSalida == null)
+                                        @if (item.HoraSalida == null)
                                         {
                                             <span class="badge bg-success">
                                                 Dentro
@@ -149,31 +174,23 @@
 
         </div>
 
-        <!-- PAGOS -->
-
         <div class="col-lg-6">
 
             <div class="card shadow border-0 rounded-4">
 
                 <div class="card-header bg-success text-white">
-
                     Pagos Recientes
-
                 </div>
 
                 <div class="card-body">
 
-                    <table class="table">
+                    <table class="table table-hover">
 
                         <thead>
-
                             <tr>
-
                                 <th>Total</th>
                                 <th>Método</th>
-
                             </tr>
-
                         </thead>
 
                         <tbody>
@@ -205,35 +222,33 @@
 
     </div>
 
-    <!-- MAPA -->
+    <!-- ESPACIOS -->
 
     <div class="card shadow border-0 rounded-4 mt-4">
 
         <div class="card-header bg-primary text-white">
-
             Estado de Espacios
-
         </div>
 
         <div class="card-body">
 
             <div class="parking-grid">
 
-                @foreach(var e in Model.Espacios)
+                @foreach (var e in Model.Espacios)
                 {
                     string clase = "espacio-disponible";
 
-                    if(e.Estado == "Ocupado")
+                    if (e.Estado == "Ocupado")
                     {
                         clase = "espacio-ocupado";
                     }
 
-                    if(e.Estado == "Reservado")
+                    if (e.Estado == "Reservado")
                     {
                         clase = "espacio-reservado";
                     }
 
-                    if(e.Estado == "FueraServicio")
+                    if (e.Estado == "FueraServicio")
                     {
                         clase = "espacio-fuera";
                     }

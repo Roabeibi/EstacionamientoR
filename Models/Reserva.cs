@@ -22,5 +22,9 @@ namespace EstacionamientoR.Models
 
         public string Estado { get; set; }
             = "Activa";
+        
+        public string? EstacionamientoId { get; set; }
+
+        public string? NombreEstacionamiento { get; set; }
     }
 }

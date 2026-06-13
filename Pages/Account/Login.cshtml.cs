@@ -44,20 +44,28 @@ namespace EstacionamientoR.Pages.Account
                 return Page();
             }
 
-            var claims = new List<Claim>
-            {
-                new Claim(
-                    ClaimTypes.Name,
-                    usuario.Nombre),
+var claims = new List<Claim>
+{
+    new Claim(
+        ClaimTypes.Name,
+        usuario.Nombre),
 
-                new Claim(
-                    ClaimTypes.Email,
-                    usuario.Correo),
+    new Claim(
+        ClaimTypes.Email,
+        usuario.Correo),
 
-                new Claim(
-                    ClaimTypes.Role,
-                    usuario.Rol)
-            };
+    new Claim(
+        ClaimTypes.Role,
+        usuario.Rol),
+
+    new Claim(
+        "SucursalId",
+        usuario.EstacionamientoId ?? ""),
+
+    new Claim(
+        "Sucursal",
+        usuario.NombreEstacionamiento ?? "")
+};
 
             var identity =
                 new ClaimsIdentity(

@@ -7,6 +7,7 @@ C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\EstacionamientoR.csproj.CoreCo
 C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\EstacionamientoR.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\EstacionamientoR.RazorAssemblyInfo.cache
 C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\EstacionamientoR.RazorAssemblyInfo.cs
+C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\EstacionamientoR.sourcelink.json
 C:\Users\equor\EstacionamientoR\bin\Debug\net10.0\appsettings.Development.json
 C:\Users\equor\EstacionamientoR\bin\Debug\net10.0\appsettings.json
 C:\Users\equor\EstacionamientoR\bin\Debug\net10.0\EstacionamientoR.staticwebassets.runtime.json
@@ -43,6 +44,7 @@ C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\scopedcss\Pages\Shared\_Layout
 C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\scopedcss\bundle\EstacionamientoR.styles.css
 C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\scopedcss\projectbundle\EstacionamientoR.bundle.scp.css
 C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\compressed\wkmxqhz69w-{0}-5s4ak0jfy9-5s4ak0jfy9.gz
+C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\compressed\9jf1tzk967-{0}-zxc8ka45z1-zxc8ka45z1.gz
 C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\compressed\0zrt9cjadi-{0}-61n19gt1b8-61n19gt1b8.gz
 C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\compressed\a1srpnu7uz-{0}-5ipweew5fc-5ipweew5fc.gz
 C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\compressed\tue4z10zl5-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
@@ -105,6 +107,8 @@ C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\compressed\1k7rurn7d8-{0}-2z0n
 C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\compressed\pcqiwxaq9v-{0}-muycvpuwrr-muycvpuwrr.gz
 C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\compressed\bi56ngw9il-{0}-87fc7y1x7t-87fc7y1x7t.gz
 C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\compressed\q4q819po1l-{0}-mlv21k5csn-mlv21k5csn.gz
+C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\compressed\vlnkseklbw-{0}-ade9am9hnc-ade9am9hnc.gz
+C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\compressed\4ois8o64m9-{0}-ade9am9hnc-ade9am9hnc.gz
 C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\staticwebassets.build.json
 C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\staticwebassets.build.json.cache
 C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\staticwebassets.development.json
@@ -116,6 +120,3 @@ C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\refint\EstacionamientoR.dll
 C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\EstacionamientoR.pdb
 C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\EstacionamientoR.genruntimeconfig.cache
 C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\ref\EstacionamientoR.dll
-C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\compressed\9jf1tzk967-{0}-zxc8ka45z1-zxc8ka45z1.gz
-C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\compressed\vlnkseklbw-{0}-ade9am9hnc-ade9am9hnc.gz
-C:\Users\equor\EstacionamientoR\obj\Debug\net10.0\compressed\4ois8o64m9-{0}-ade9am9hnc-ade9am9hnc.gz
